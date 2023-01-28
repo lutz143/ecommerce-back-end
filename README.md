@@ -21,9 +21,9 @@ SO THAT my company can compete with other e-commerce companies
 
 * ~~GIVEN a functional Express.js API~~
 * ~~WHEN I add my database name, MySQL username, and MySQL password to an environment variable file~~
-* THEN I am able to connect to a database using Sequelize
-* WHEN I enter schema and seed commands
-* THEN a development database is created and is seeded with test data
+* ~~THEN I am able to connect to a database using Sequelize~~
+* ~~WHEN I enter schema and seed commands~~
+* ~~THEN a development database is created and is seeded with test data~~
 * WHEN I enter the command to invoke the application
 * THEN my server is started and the Sequelize models are synced to the MySQL database
 * WHEN I open API GET routes in Insomnia for categories, products, or tags
@@ -166,7 +166,7 @@ Your database should contain the following four models, including the requiremen
 
 You'll need to execute association methods on your Sequelize models to create the following relationships between them:
 
-* `Product` belongs to `Category`, and `Category` has many `Product` models, as a category can have multiple products but a product can only belong to one category.
+* ~~`Product` belongs to `Category`~~, ~~and `Category` has many `Product` models~~, as a category can have multiple products but a product can only belong to one category.
 
 * `Product` belongs to many `Tag` models, and `Tag` belongs to many `Product` models. Allow products to have multiple tags and tags to have many products by using the `ProductTag` through model.
 
