@@ -21,14 +21,19 @@ Product.init(
       allowNull: false
     },
     price: {
-      type: DataTypes.DECIMAL(10, 2),
+      type: DECIMAL(10, 2),
+      get() {
+        // Workaround until sequelize issue is fixed
+        const value = this.getDataValue('price');
+        return value === null ? null : parseFloat(value);
+      },
       allowNull: false,
-      dialectTypes: {
-        decimalNumbers: true
-      },
-      dialectOptions: {
-        decimalNumbers: true
-      },
+      // dialectTypes: {
+      //   decimalNumbers: true
+      // },
+      // dialectOptions: {
+      //   decimalNumbers: true
+      // },
       validate: {
         isDecimal: true
       }
