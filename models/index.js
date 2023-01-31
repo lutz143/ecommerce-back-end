@@ -11,12 +11,9 @@ Product.belongsTo(Category, {
 })
 
 
-
 // Categories have many Products
 Category.hasMany(Product, {
   foreignKey: 'category_id',
-  // onDelete: 'CASCADE'
-  // constraints: false,
 });
 
 
@@ -44,8 +41,6 @@ Tag.belongsToMany(Product, {
   as: 'tag_products',
   onDelete: 'CASCADE'
 });
-
-
 
 
 console.log('Successfully Ran Models index.js')

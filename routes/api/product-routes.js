@@ -1,9 +1,10 @@
+// require the express router and the Product, Category, Tag and ProductTag extension of the Models for table design/join
 const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
 
-// GET all products
+// GET all products and associated categories and tags via the one to many relationships established in the index through pk and fk
 router.get('/', async (req, res) => {
   try {
     const products = await Product.findAll({
@@ -15,7 +16,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one product by its ID
+// GET one product by its ID and associated categories and tags via the one to many relationships established in the index through pk and fk
 router.get('/:id', async (req, res) => {
   try {
     const products = await Product.findByPk(req.params.id, {
@@ -29,7 +30,7 @@ router.get('/:id', async (req, res) => {
 
 
 
-// create new product
+// create new product and auto increment its primary key (id)
 router.post('/', (req, res) => {
   /* req.body should look like this...
     {
@@ -63,7 +64,7 @@ router.post('/', (req, res) => {
 
 
 
-// update product
+// update product by id
 router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
@@ -105,6 +106,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// delete a product by id
 router.delete('/:id', async (req, res) => {
   try {
     const productData = await Product.destroy({

@@ -1,10 +1,11 @@
+// require the express router and the Category and Products extension of the Models for table design/join
 const router = require('express').Router();
 const sequelize = require('sequelize');
 const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
-// GET all categories
+// GET all categories and include the product model via the join established in the model
 router.get('/', async (req, res) => {
   try {
     const categories = await Category.findAll({
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-
+// GET category by from the endpoint parameter and include the product model via the join established in the model
 router.get('/:id', async (req, res) => {
   try {
     const categories = await Category.findByPk(req.params.id, {
@@ -28,7 +29,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// create a new category
+// create a new category and auto increment its primary key (id)
 router.post('/', async (req, res) => {
   try {
     const categoryData = await Category.create(req.body);
@@ -53,7 +54,7 @@ router.put('/:id', (req, res) => {
   });
 });
 
-
+// delete a category by first async and awaiting for the associated products to be deleted first within that category
 router.delete('/:id', async (req, res) => {
   try {
     

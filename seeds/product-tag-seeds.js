@@ -1,5 +1,7 @@
+// require the schema models
 const { ProductTag } = require('../models');
 
+// seed product tags with project and tag ids
 const productTagData = [
   {
     product_id: 1,
@@ -51,6 +53,7 @@ const productTagData = [
   },
 ];
 
+// create the seeds
 const seedProductTags = () => ProductTag.bulkCreate(productTagData);
 
 module.exports = seedProductTags;

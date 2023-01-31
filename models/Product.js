@@ -7,7 +7,7 @@ const sequelize = require('../config/connection');
 // Initialize Product model (table) by extending off Sequelize's Model class
 class Product extends Model {}
 
-// set up fields and rules for Product model
+// set up fields and rules for Product model, category_id as foreign key, validate price is decimal, validate stock is numeric
 Product.init(
   {
     id: {
@@ -28,12 +28,6 @@ Product.init(
         return value === null ? null : parseFloat(value);
       },
       allowNull: false,
-      // dialectTypes: {
-      //   decimalNumbers: true
-      // },
-      // dialectOptions: {
-      //   decimalNumbers: true
-      // },
       validate: {
         isDecimal: true
       }
@@ -51,8 +45,7 @@ Product.init(
       onDelete: 'CASCADE',
       references: {
         model: 'category',
-        key: 'id',
-        // unique: false
+        key: 'id'
       }
     }
   },

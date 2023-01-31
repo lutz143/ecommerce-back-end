@@ -1,5 +1,7 @@
+// require the schema models
 const { Tag } = require('../models');
 
+// seed tag data with names
 const tagData = [
   {
     tag_name: 'rock music',
@@ -27,6 +29,7 @@ const tagData = [
   },
 ];
 
+// create the seeds
 const seedTags = () => Tag.bulkCreate(tagData);
 
 module.exports = seedTags;

@@ -1,5 +1,7 @@
+// require the schema models
 const { Product } = require('../models');
 
+// seed product data with product name, price, stock amount, and category id for fk reference
 const productData = [
   {
     product_name: 'Plain T-Shirt',
@@ -33,6 +35,7 @@ const productData = [
   },
 ];
 
+// create the seeds
 const seedProducts = () => Product.bulkCreate(productData);
 
 module.exports = seedProducts;

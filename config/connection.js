@@ -1,6 +1,8 @@
+// require the sequelize package referencing the db, un, and password from the .env file
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
+// declare sequelize so that db name, un, and password may be fed through and exported for reference
 let sequelize;
 
 if (process.env.JAWSDB_URL) {

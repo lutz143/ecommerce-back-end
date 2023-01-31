@@ -1,5 +1,7 @@
+// require the schema models
 const { Category } = require('../models');
 
+// seed category data with category name
 const categoryData = [
   {
     category_name: 'Shirts',
@@ -18,6 +20,7 @@ const categoryData = [
   },
 ];
 
+// create the seeds
 const seedCategories = () => Category.bulkCreate(categoryData);
 
 module.exports = seedCategories;

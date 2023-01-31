@@ -1,9 +1,10 @@
+// require the express router and the Product, Tag and ProductTag extension of the Models for table design/join
 const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
 
-// GET all tags
+// GET all tags and associated products via the relationship established in the index through pk and fk
 router.get('/', async (req, res) => {
   try {
     const tags = await Tag.findAll({
@@ -15,7 +16,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one product by its ID
+// GET one tag by its ID and associated products via relationship established in the index through pk and fk
 router.get('/:id', async (req, res) => {
   try {
     const tags = await Tag.findByPk(req.params.id, {
@@ -27,7 +28,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-
+// create a new tag and auto increment its primary key (id)
 router.post('/', async (req, res) => {
   try {
     const tagData = await Tag.create(req.body);
@@ -37,6 +38,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// update a tag by id
 router.put('/:id', (req, res) => {
   Tag.update(req.body, {
     where: {
@@ -50,6 +52,7 @@ router.put('/:id', (req, res) => {
   });
 });
 
+// delete a tag by id
 router.delete('/:id', async (req, res) => {
   try {
     const tagData = await Tag.destroy({
