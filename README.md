@@ -23,6 +23,9 @@ If your README is long, add a table of contents to make it easy for users to fin
 ## Usage
 This application should be used as a demonstration of the functionality between sequelize, MySQL, and proper endpoint handling to develop a backend of a ecommerce website.
 
+## Video Demo
+https://drive.google.com/file/d/1urmA8hGVFI-n15MxMmp07NlYfBjM9SUf/view
+
 ---
 
 ## How to Contribute
